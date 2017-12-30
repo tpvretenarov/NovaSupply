@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <a class="navbar-brand" href="/"> 
+    <img src="http://novasupply.co/wp-content/uploads/2015/10/BUDa0C5O2lkQowVDaNiURRzalv9L8AjATeaxdhTMKxg-2.jpg" class="img-thumbnail" width="70" height="70" alt="">
+  </a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#home-navbar" aria-controls="home-navbar" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="home-navbar">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active" >
+      <a class="nav-link" href="">Home<span class="sr-only">(current)</span></a> <!-- sr-only is used for the visually impaired -->
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/shop" onclick="reloadRoute()" >Shop</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Story</a>
+    </li>
+  </ul>
+
+  <script>
+    $scope.reloadRoute = function() {
+      $route.reload();
+   }  
+  </script>
+
+  
+  <!-- Search bar -->
+ <!--
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+-->
+  </div>
+</nav> 
