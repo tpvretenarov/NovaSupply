@@ -1,0 +1,92 @@
+
+<div *ngIf="authService.currentUser">
+	
+	<div align="center">		
+		
+		<br>
+		<h4>
+			<strong>Welcome, {{ authService.currentUserName }}</strong> 
+		</h4>
+		<br>
+	</div>
+
+	<div class="container">
+		<div class="jumbotron">
+		<h3 id="accountText">Account</h3>
+		<hr>
+				<div class="container">
+						<button data-toggle="collapse" data-target="#demo1" class="btn btn-info" (click)="getUserInfo()">Edit Name</button>
+						<div id="demo1" class="collapse">
+								<div class="form-group">
+									<br>
+										<div class="row">
+											<div class="col">
+												<label for="firstName">First Name</label>
+												<input type="firstName" class="form-control" id="firstName" placeholder="{{firstname_}}" name="firstName" required [(ngModel)]="firstname_">
+											</div>
+											<div class="col">
+												<label for="lastName">Last Name</label>
+												<input type="lastName" class="form-control" id="lastName"  placeholder="{{lastname_}}" name="lastName" required [(ngModel)]="lastname_">
+											</div>
+										</div>
+										<br>
+										<button type="submit" class="btn btn-success"  (click)="addUser()">Save Changes</button>
+									</div>
+						</div>
+						
+						<br>
+						<hr>
+					
+						<button data-toggle="collapse" data-target="#demo" class="btn btn-info" (click)="getUserInfo()">Edit Shipping</button>
+					
+						<div id="demo" class="collapse">
+						<form (ngSubmit)="editUser()">
+						  <div class="form-group">
+							  <br>
+							  <label for="lcountry">Country:</label><br>
+							  <select class="form-control" id="country" [(ngModel)]="country_" name="Country">
+								  <option value="" disabled selected>{{country_}}</option>
+								  <option>Canada</option>
+								  <option>America</option>
+								  <option>Sri Lanka</option>
+								  <option>Bulgaria</option>
+								  <option>Narnia</option>
+							  </select>
+						  </div>
+						  
+						  <div class="form-group">
+							  <label for="saddress">Street Address:</label>
+							  <input type="text" class="form-control" id="addr" name="addr" placeholder="{{address_}}" [(ngModel)]="address_">
+						  </div>
+						  
+						  <div class="form-group">
+							  <label for="city">City:</label>
+							  <input type="text" class="form-control" id="city" name="city" placeholder="{{city_}}" [(ngModel)]="city_">
+						  </div>
+						  
+						  <div class="form-group">
+							  <label for="pt">Province/Territory:</label>
+							  <input type="text" class="form-control" id="pt" name="pt" placeholder="{{province_}}" [(ngModel)]="province_">
+						  </div>
+						  
+						  <div class="form-group">
+							  <label for="pc">Postal Code:</label>
+							  <input type="text" class="form-control" id="pcode" name="pcode" placeholder="{{postalcode_}}" [(ngModel)]="postalcode_">
+						  </div>
+						  
+						  <div class="form-group">
+							  <label for="pn">Phone Number:</label>
+							  <input type="text" class="form-control" id="pnumber" name="pnumber" placeholder="{{phone_}}" [(ngModel)]="phone_">
+						  </div>
+						  
+						  <button type="submit" class="btn btn-success" (click)="addUser()">Save Changes</button>
+						  
+						  
+						</form>
+						</div>
+					</div>
+					<button class="btn btn-primary" (click)="logout()" >Logout</button>
+
+			</div>
+	</div>
+</div>

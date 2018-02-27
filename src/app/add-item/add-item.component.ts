@@ -19,12 +19,17 @@ export class AddItemComponent implements OnInit {
   Information: string;
   Sizes: string;
   URL:string;
+  Category: string;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.loadItems();
+  }
+
+  //Loads documents/ items from the service "Product" 
+  private loadItems(){
     this.productService.getAllProducts().subscribe(items => {
-      //console.log(items);
       this.items = items;
     });
   }
@@ -37,10 +42,20 @@ export class AddItemComponent implements OnInit {
     this.product.Fabric = this.Fabric;
     this.product.URL = this.URL;
     this.product.Sizes = this.Sizes;
+    this.product.Category = this.Category;
 
     //console.log(this.Name);
 
     this.productService.addProduct(this.product);
+
+    
+  }
+
+  checkUpdate(pName){
+    this.loadItems();
+
+    this.productService.findProduct(pName);
+
   }
 
 }

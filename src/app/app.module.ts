@@ -13,25 +13,36 @@ import { ProductService } from './services/product.service'
 
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form/form.component';
+//import {AppRoutingModule} from './app-routing.module';
 
 //For Firebase
 import { environment } from '../environments/environment'
 import { AngularFireModule} from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { ItemComponent } from './item/item.component';
+import {UserLoginComponent} from './user-login/user-login.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {AuthService} from './auth.service';
+
+import {UserService} from './services/user.service';
+
+
+
 
 const appRoutes: Routes = [
   {path:'', component:IndexComponent},
   {path:'shop', component:ShopComponent},
   {path:'form', component:FormComponent},
   {path:'item', component:ItemComponent},
-  {path:'add', component:AddItemComponent}
-
+  {path:'add', component:AddItemComponent},
+  {path:'login', component:UserLoginComponent},
+  {path: 'user', component: UserInfoComponent},
+  
 ]
 
 @NgModule({
@@ -42,17 +53,20 @@ const appRoutes: Routes = [
     FormComponent,
     NavbarComponent,
     AddItemComponent,
-    ItemComponent
+    ItemComponent,
+    UserLoginComponent,
+    UserInfoComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase, 'NovaSupply'),
     AngularFirestoreModule,
-    BsDropdownModule.forRoot()
+    AngularFireAuthModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 

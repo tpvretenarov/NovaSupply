@@ -1,3 +1,9 @@
+<body background-image="http://novasupply.co/wp-content/uploads/2015/10/pa191207.jpg">
+
+<script>
+  $scope.reloadRoute = function() { $route.reload(); }
+</script>
+
 <header class="intro-header">
   <div class="container">
     <div class="intro-message">
@@ -5,30 +11,48 @@
       <hr class="intro-divider">
       <hr class="intro-divider">
 
-       <!-- Search bar -->
-      <form class="form-inline">
+      <!-- Dropdown List for Ordering by price or Name -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Order by:
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" (click)="orderByNameAsc()">Name (Ascending)</button>
+          <button class="dropdown-item" type="button" (click)="orderByNameDesc()" onclick="reloadRoute()">Name (Descending)</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button" (click)="orderByPriceAsc()">Price (Ascending)</button>
+          <button class="dropdown-item" type="button" (click)="orderByPriceDesc()">Price (Descending)</button>
+        </div>
+     
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" (click)="getAllItems()">All Prouducts</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button" (click)="orderByCategory()">Shirts</button>
+          <button class="dropdown-item" type="button" (click)="orderByCategory()">Hoodies</button>
+          <button class="dropdown-item" type="button" (click)="orderByCategory()">Pants</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button" (click)="orderByGenderM()">Males</button>
+          <button class="dropdown-item" type="button" (click)="orderByGenderF()">Females</button>
+        </div>
+        <div id="itemSearch">
         <input class="form-control mr-sm-2" type="text" placeholder="Search items..." aria-label="Search" (keydown)="search($event)">
-        <!--<div *ngFor="let Clothes of items">
+        </div>
+      </div>
+
+       <!-- Search bar -->
+          <!--<div *ngFor="let Clothes of items">
           <h4>{{Clothes.Name}}</h4>
           <p>
             {{Clothes.Price}}
           </p>
         </div>-->
-      </form>
       
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Order by
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Name (Alphabetical)</a>
-            <a class="dropdown-item" href="#">Price (Low to High)</a>
-            <a class="dropdown-item" href="#">Price (High to Low)</a>
-          </div> 
-     
     </div>  
   </div>
 </header>
-
  
 <div class="container" id="main1" align="center" style="padding-top:50px; padding-bottom:200px">
   <div class="row"  *ngFor="let Clothes of items" style="padding-top:20px; padding-bottom:60px; padding-left:25px; padding-right:20px;">
@@ -40,7 +64,7 @@
           <div class="middle">
             <h3 class="text">{{Clothes.Name}}</h3>
             <p class="text">${{Clothes.Price}} CAD</p>
-            <button class="btn btn-secondary" (click)="displayItem(Clothes)" routerLink="/item">Purchase</button>
+            <button class="btn btn-secondary" (click)="storeItem(Clothes)" routerLink="/item">Purchase</button>
           </div>
         </div>
 
@@ -69,3 +93,4 @@
   </ul>
 </div>
 -->
+</body>
